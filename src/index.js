@@ -27,13 +27,10 @@ const randomIntegerFromInterval = (min, max) => {
 
 const changeColor = {
   intervalId: null,
-  isActive: false,
   
   start() {
-    if (this.isActive) {
-      return
-     }
-    this.isActive = true;
+    refs.start.setAttribute('disabled', true);
+    
     this.intervalId = setInterval(() => {
       refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length - 1)];
     }, 1000);
@@ -41,7 +38,7 @@ const changeColor = {
 
   stop() {
     clearInterval(this.intervalId);
-    this.isActive = false;
+  refs.start.removeAttribute('disabled')
   }
 }
 
